@@ -1,0 +1,29 @@
+PODS:
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+  - SwiftLinkPreview (3.0.0)
+
+DEPENDENCIES:
+  - RealmSwift
+  - SwiftLinkPreview (from `/Users/williamgossard/Workspace/Test/SwiftLinkPreview`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
+
+EXTERNAL SOURCES:
+  SwiftLinkPreview:
+    :path: "/Users/williamgossard/Workspace/Test/SwiftLinkPreview"
+
+SPEC CHECKSUMS:
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  SwiftLinkPreview: e41646e11602143c61389a6a26ed92481f93ef27
+
+PODFILE CHECKSUM: 6440b52fe705f0ffddc544c43ce94d6ba85d07e3
+
+COCOAPODS: 1.5.3
