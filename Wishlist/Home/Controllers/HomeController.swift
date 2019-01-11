@@ -21,6 +21,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
         collectionView.backgroundColor = .white
         collectionView.register(WishCell.self, forCellWithReuseIdentifier: "cellId")
+
+        
         
 //        for url in urls {
 //            slp.preview(url,
