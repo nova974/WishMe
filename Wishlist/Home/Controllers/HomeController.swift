@@ -21,9 +21,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
         collectionView.backgroundColor = .white
         collectionView.register(WishCell.self, forCellWithReuseIdentifier: "cellId")
-
         
-        
+        setupNavigationBarItems()
 //        for url in urls {
 //            slp.preview(url,
 //                        onSuccess: { (response) in print("\(response)") },
