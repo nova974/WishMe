@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '9.1'
 
 target 'Wishlist' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,7 +7,7 @@ target 'Wishlist' do
   
   pod 'SwiftLinkPreview', :path => '/Users/williamgossard/Workspace/Test/SwiftLinkPreview'
   pod 'RealmSwift'
-  # Pods for Wishlist
+  # pod 'LBTAComponents', '~> 1.0.2'
 
   target 'WishlistTests' do
     inherit! :search_paths
