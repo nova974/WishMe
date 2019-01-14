@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishCell: UICollectionViewCell {
+class WishCell: UITableViewCell {
     
     private var titleLabel: UILabel = {
         var l = UILabel()
@@ -34,28 +34,27 @@ class WishCell: UICollectionViewCell {
         iv.image = UIImage(named: "pandaroux")
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFill
-        
-        iv.addSubview(overlay)
-
+        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
     private lazy var overlay: UIView = {
-        var v = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        var v = UIView()
         v.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.5)
+        v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         setupView()
-        
     }
 
     private func setupView() {
         
         addSubview(bgImageView)
+        addSubview(overlay)
         addSubview(titleLabel)
         addSubview(priceLabel)
 
@@ -63,21 +62,25 @@ class WishCell: UICollectionViewCell {
         bgImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bgImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         bgImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        bgImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        bgImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+
+        overlay.topAnchor.constraint(equalTo: bgImageView.topAnchor).isActive = true
+        overlay.leadingAnchor.constraint(equalTo: bgImageView.leadingAnchor).isActive = true
+        overlay.trailingAnchor.constraint(equalTo: bgImageView.trailingAnchor).isActive = true
+        overlay.bottomAnchor.constraint(equalTo: bgImageView.bottomAnchor).isActive = true
 
         titleLabel.bottomAnchor.constraint(equalTo: priceLabel.topAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 
-        priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12).isActive = true
+        priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         priceLabel.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
 }
