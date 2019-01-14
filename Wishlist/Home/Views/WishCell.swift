@@ -13,7 +13,7 @@ class WishCell: UITableViewCell {
     private var titleLabel: UILabel = {
         var l = UILabel()
         l.text = "Title yeah"
-        l.textColor = .black
+        l.textColor = .white
         l.font = UIFont.boldSystemFont(ofSize: 24)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -22,7 +22,7 @@ class WishCell: UITableViewCell {
     private var priceLabel: UILabel = {
         var l = UILabel()
         l.text = "200 €"
-        l.textColor = .black
+        l.textColor = .white
         l.font = UIFont.boldSystemFont(ofSize: 18)
         l.translatesAutoresizingMaskIntoConstraints = false
 
@@ -40,7 +40,7 @@ class WishCell: UITableViewCell {
     
     private lazy var overlay: UIView = {
         var v = UIView()
-        v.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.5)
+        v.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 0.5)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
