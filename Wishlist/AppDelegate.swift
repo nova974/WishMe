@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        // make migration
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { (migration, oldSchemaVersion) in
+                if oldSchemaVersion < 1 {
+                    
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        let _ = try! Realm()
+
         // Setting main view
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
