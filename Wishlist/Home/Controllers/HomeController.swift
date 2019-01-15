@@ -13,8 +13,9 @@ import RealmSwift
 class HomeController: UITableViewController {
 
     private let slp = SwiftLinkPreview()
-    
-    private let urls = ["https://badmania.fr/badminton-astrox-22-9fp1373.html", "https://www.archiduchesse.com/fr/bouclette/202-rouge-maison-close.html", "https://www.leslipfrancais.fr/le-marius-sapin-boxer-court-12283.html"]
+    private let realm = try! Realm()
+
+    private var wishList: [Wish] = []
 
     
     override func viewDidLoad() {
@@ -24,13 +25,13 @@ class HomeController: UITableViewController {
         tableView.register(WishCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
 
+        wishList = self.fetchWishlist()
+
         setupNavigationBarItems()
     }
 
     func addWish(link: String) {
         if link == "" { return }
-
-        let realm = try! Realm()
 
         if canOpenURL(string: link) {
 
@@ -49,15 +50,21 @@ class HomeController: UITableViewController {
                     newWish.desc = response.description ?? ""
                     newWish.price = response.price ?? ""
 
-
-                    try! realm.write {
+                    try! self.realm.write {
                         newWish.id = newWish.incrementId()
-                        realm.add(newWish)
+                        self.realm.add(newWish)
+
+                        self.wishList.append(newWish)
+                        self.tableView.insertRows(at: [IndexPath(item: self.wishList.count - 1, section: 0)], with: .none)
                     }
 
                 }, onError: { (error) in print("\(error)") })
             }
         }
+    }
+
+    func fetchWishlist() -> [Wish] {
+        return Array(realm.objects(Wish.self))
     }
     
     @objc func displayAlert() {
@@ -74,16 +81,17 @@ class HomeController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return urls.count
+        return wishList.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 170
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! WishCell
         cell.selectionStyle = .none
+        cell.wish = self.wishList[indexPath.item]
         return cell
     }
 
@@ -100,9 +108,13 @@ class HomeController: UITableViewController {
     }
 
     func handlerTableViewRowAction(action: UITableViewRowAction, index: IndexPath) {
-        print("delete action")
-        // supprimer db
-        // supprimer row
+        try! realm.write {
+            // supprimer db
+            realm.delete(wishList[index.item])
+            wishList.remove(at: index.item)
+            // supprimer row
+            self.tableView.deleteRows(at: [index], with: .fade)
+        }
     }
 
     func canOpenURL(string: String?) -> Bool {

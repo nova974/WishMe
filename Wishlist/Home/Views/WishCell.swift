@@ -9,6 +9,20 @@
 import UIKit
 
 class WishCell: UITableViewCell {
+
+    var wish: Wish? {
+        didSet {
+            guard let w = wish else { return }
+
+            titleLabel.text = w.title
+            priceLabel.text = w.price == "" ? "- €" : w.price! + " €"
+            let url = URL(string: w.image!)
+            let data = try? Data(contentsOf: url!)
+            if let imgData = data {
+                bgImageView.image = UIImage(data: imgData)
+            }
+        }
+    }
     
     private var titleLabel: UILabel = {
         var l = UILabel()
