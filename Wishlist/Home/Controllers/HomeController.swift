@@ -36,7 +36,7 @@ class HomeController: UITableViewController {
 
             // check if exists before insert
             let find = realm.objects(Wish.self).filter("url == \"\(link)\"")
-            
+
             if find.count == 0 {
                 slp.preview(link, onSuccess: { (response) in
                     let newWish = Wish()
@@ -51,6 +51,7 @@ class HomeController: UITableViewController {
 
 
                     try! realm.write {
+                        newWish.id = newWish.incrementId()
                         realm.add(newWish)
                     }
 
