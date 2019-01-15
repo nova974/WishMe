@@ -62,7 +62,7 @@ class WishCell: UITableViewCell {
         bgImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bgImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         bgImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        bgImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+        bgImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
 
         overlay.topAnchor.constraint(equalTo: bgImageView.topAnchor).isActive = true
         overlay.leadingAnchor.constraint(equalTo: bgImageView.leadingAnchor).isActive = true
@@ -73,7 +73,7 @@ class WishCell: UITableViewCell {
         titleLabel.leadingAnchor.constraint(equalTo: priceLabel.leadingAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 
-        priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -32).isActive = true
+        priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -22).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         priceLabel.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 

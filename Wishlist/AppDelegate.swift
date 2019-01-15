@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         window?.rootViewController = UINavigationController(rootViewController: HomeController())
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         return true
     }

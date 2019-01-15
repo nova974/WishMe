@@ -15,6 +15,7 @@ extension HomeController {
     }
     
     private func setupRightNavigationItems() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(displayAlert))
     }
+
 }
